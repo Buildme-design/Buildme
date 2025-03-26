@@ -7,35 +7,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-900 font-roboto">
 
     <!-- Navigation Bar -->
-    <nav class="bg-white p-4 fixed w-full top-0 left-0 z-50 shadow-md">
+    <nav class="bg-white p-4 fixed w-full top-0 left-0 z-50 shadow-md transition-colors duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <h1 class="text-2xl font-bold">BuildMe</h1>
             <ul class="flex space-x-6">
-                <li><a href="#" class="text-gray-700 hover:text-blue-500"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#" class="text-gray-700 hover:text-blue-500"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#" class="text-gray-700 hover:text-blue-500"><i class="fas fa-chart-line"></i> Research</a></li>
-                <li><a href="#" class="text-gray-700 hover:text-blue-500"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500" aria-label="Home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500" aria-label="About"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500" aria-label="Research"><i class="fas fa-chart-line"></i> Research</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-   <section class="flex flex-col items-center justify-center text-center min-h-screen px-6 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1574848296471-28f79a036f79?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9kZXJuJTIwYXJjaGl0ZWN0dXJlfGVufDB8fDB8fHww');">
-    <!-- Overlay -->
-    
-       
-    <h2 class="text-5xl font-poppins font-bold mb-6 text-white">Mastering ROI Evaluation</h2>
-    <p class="text-lg text-white max-w-2xl">
-        Learn how to assess a project's return on investment using industry-standard financial practices.
-    </p>
-    <a href="get-started.html" class="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600">
-        Get Started
-    </a>
+    <script>
+        // Change navbar background color on scroll
+        window.onscroll = function() { scrollFunction() };
 
-</section>
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("navbar").classList.add("bg-gray-900", "text-white");
+            } else {
+                document.getElementById("navbar").classList.remove("bg-gray-900", "text-white");
+            }
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center justify-center text-center min-h-screen px-6 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1574848296471-28f79a036f79?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9kZXJuJTIwYXJjaGl0ZWN0dXJlfGVufDB8fDB8fHww');">
+        <!-- Dark Overlay for Text Contrast -->
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+
+        <h2 class="text-5xl font-poppins font-bold mb-6 text-white opacity-0 animate-fadeIn">Mastering ROI Evaluation</h2>
+        <p class="text-lg text-white max-w-2xl opacity-0 animate-fadeIn delay-200">
+            Learn how to assess a project's return on investment using industry-standard financial practices.
+        </p>
+        <a href="get-started.html" class="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 opacity-0 animate-fadeIn delay-400">
+            Get Started
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p>&copy; 2025 BuildMe. All rights reserved.</p>
+            <p class="text-sm">Terms of Service | Privacy Policy</p>
+        </div>
+    </footer>
+
 </body>
 </html>
